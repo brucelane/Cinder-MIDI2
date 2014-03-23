@@ -33,6 +33,8 @@ Using
 
  ```mInput.midiSignal.connect(boost::bind(&MidiTestApp::midiListener, this, boost::arg<1>::arg())); ```
 
+ 3. if you are using Windows, you need to add ```winmm.lib``` to your linker
+
 ============
 
 ###Positive changes>

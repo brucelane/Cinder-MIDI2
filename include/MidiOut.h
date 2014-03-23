@@ -1,9 +1,9 @@
 /*
- MidiOut.h, written by Tim Murray-Browne, January 2013.
- http://timmb.com
- Based on ofxMidiOut from openFrameworks and an extension of a block by Hector Sanchez-Pajares.
- 
- 
+ MidiBlock for Cinder developed by Bruce Lane, Martin Blasko. 
+Original code by Hector Sanchez-Pajares(http://www.aerstudio.com).
+MidiOut written by Tim Murray-Browne (http://timmb.com)
+Midi parsing taken from openFrameworks addon ofxMidi by Theo Watson & Dan Wilcox
+
  This is a block for MIDI Integration for Cinder framework developed by The Barbarian Group, 2010
  
  Redistribution and use in source and binary forms, with or without modification, are permitted provided that

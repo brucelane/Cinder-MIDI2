@@ -1,9 +1,4 @@
 /*
- Copyright (c) 2010, Hector Sanchez-Pajares
- Aer Studio http://www.aerstudio.com
- All rights reserved.
- 
- 
  This is a block for MIDI Integration for Cinder framework developed by The Barbarian Group, 2010
  
  Redistribution and use in source and binary forms, with or without modification, are permitted provided that

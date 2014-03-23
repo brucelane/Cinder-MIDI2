@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <cinder>
 <block
-	name="Midi2.0"
+	name="Midi2"
 	id="fr.batchass.midi"
 	author="Martin Blasko"
 	license="GPL"
@@ -13,6 +13,7 @@
 	<supports os="msw" />
 	<includePath>include</includePath>
 	<includePath>lib</includePath>
+	<includePath>src</includePath>
 	<header>include/MidiConstants.h</header>
 	<header>include/MidiExceptions.h</header>
 	<header>include/MidiHeaders.h</header>

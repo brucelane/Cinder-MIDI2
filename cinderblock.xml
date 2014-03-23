@@ -7,11 +7,12 @@
 	license="GPL"
 	summary="Midi block for Cinder developed by Bruce Lane, Martin Blasko. Original code by Hecqspec. Midi parsing taken from ofxMidi by Theo Watson & Dan Wilcox
 	"
-	url="https://github.com/batchass/Cinder-MIDI"
-	git="git://github.com/batchass/Cinder-MIDI.git"
+	url="https://github.com/MartinBspheroid/Cinder-MIDI2"
+	git="https://github.com/MartinBspheroid/Cinder-MIDI2.git"
 	>
 	<supports os="msw" />
 	<includePath>include</includePath>
+	<includePath>lib</includePath>
 	<header>include/MidiConstants.h</header>
 	<header>include/MidiExceptions.h</header>
 	<header>include/MidiHeaders.h</header>
@@ -19,13 +20,13 @@
 	<header>include/MidiIn.h</header>
 	<header>include/MidiMessage.h</header>
 	<header>include/MidiOut.h</header>
-	<header>include/RtError.h</header>
-	<header>include/RtMidi.h</header>
+	<header>lib/RtError.h</header>
+	<header>lib/RtMidi.h</header>
 	<source>src/MidiHub.cpp</source>
 	<source>src/MidiIn.cpp</source>
 	<source>src/MidiMessage.cpp</source>
 	<source>src/MidiOut.cpp</source>
-	<source>src/RtMidi.cpp</source>
+	<source>lib/RtMidi.cpp</source>
 </block>
 <template>templates/template.xml</template>
 </cinder>

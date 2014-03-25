@@ -2,7 +2,7 @@
 <cinder>
 <block
 	name="Midi2"
-	id="fr.batchass.midi"
+	id="mb.cinder.midi2"
 	author="Martin Blasko"
 	license="GPL"
 	summary="Midi block for Cinder developed by Bruce Lane, Martin Blasko. Original code by Hecqspec. Midi parsing taken from ofxMidi by Theo Watson & Dan Wilcox

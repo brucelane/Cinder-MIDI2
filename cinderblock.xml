@@ -11,9 +11,12 @@
 	git="https://github.com/MartinBspheroid/Cinder-MIDI2.git"
 	>
 	<supports os="msw" />
+	<supports os="macosx" />
+
 	<includePath>include</includePath>
 	<includePath>lib</includePath>
 	<includePath>src</includePath>
+
 	<header>include/MidiConstants.h</header>
 	<header>include/MidiExceptions.h</header>
 	<header>include/MidiHeaders.h</header>
@@ -28,6 +31,11 @@
 	<source>src/MidiMessage.cpp</source>
 	<source>src/MidiOut.cpp</source>
 	<source>lib/RtMidi.cpp</source>
+
+	<platform os="macosx">
+		<framework sdk="true">CoreMIDI.framework</framework>
+	</platform>
+
 </block>
 <template>templates/template.xml</template>
 </cinder>

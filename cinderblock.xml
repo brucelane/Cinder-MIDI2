@@ -37,5 +37,5 @@
 	</platform>
 
 </block>
-<template>templates/template.xml</template>
+<template>templates/Basic MIDI/template.xml</template>
 </cinder>

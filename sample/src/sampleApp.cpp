@@ -1,4 +1,5 @@
 #include "cinder/app/AppNative.h"
+#include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "cinder/Utilities.h"
 #include "MidiIn.h"
@@ -96,10 +97,10 @@ void MidiTestApp::draw()
 		float ly = (200 - cc[i])*cos((i*2.83) * M_PI / 180);
 
 		gl::color(Color(1,1,1));
-		gl::drawStrokedCircle(Vec2f(x, y), 5+(notes[i]/4));
-		gl::drawLine(Vec2f(x,y), Vec2f(lx, ly));
+		gl::drawStrokedCircle(vec2(x, y), 5+(notes[i]/4));
+		gl::drawLine(vec2(x, y), vec2(lx, ly));
 		gl::color(Color(notes[i], notes[i], notes[i]));
-		gl::drawSolidCircle(Vec2f(x, y), 5+(notes[i]/4));
+		gl::drawSolidCircle(vec2(x, y), 5 + (notes[i] / 4));
 		
 	}
 	

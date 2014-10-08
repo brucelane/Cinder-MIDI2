@@ -20,28 +20,29 @@
 
 // don't forget to add winmm.lib to the linker
 
-#include "cinder/app/AppBasic.h"
+#include "cinder/app/AppNative.h"
+#include "cinder/app/RendererGl.h"
 #include "cinder/Utilities.h"
 #include <list>
-using namespace ci;
-using namespace ci::app;
-using namespace std;
-
 #include "MidiIn.h"
 #include "MidiMessage.h"
 #include "MidiConstants.h"
 
+using namespace ci;
+using namespace ci::app;
+using namespace std;
+
 #define SLIDER_NOTE 1
 
 
-class _TBOX_PREFIX_App : public AppBasic {
+class _TBOX_PREFIX_App : public AppNative {
  public:
 	void prepareSettings(Settings* settings);
 	void setup();
 	void update();
 	void draw();
 	void midiListener(midi::Message msg);
-	
+
 	midi::Input mMidiIn;
 	
 	float sliderValue;
@@ -71,8 +72,8 @@ void _TBOX_PREFIX_App::midiListener(midi::Message msg){
   {
   case MIDI_NOTE_ON:
       notes[msg.pitch] = msg.velocity;
-      status = "Pitch: " + toString(msg.pitch) + "\n" + 
-          "Velocity: " + toString(msg.velocity);
+      status = "Pitch: " + toString(msg.pitch) + "\n" + "Velocity: " + toString(msg.velocity);
+      sliderValue = msg.pitch / 127.0f;
       break;
   case MIDI_NOTE_OFF:
       break;
@@ -93,23 +94,8 @@ void _TBOX_PREFIX_App::update(){
 void _TBOX_PREFIX_App::draw(){
 	gl::clear(Color(0,0,0), true);
 	gl::color(Color(1, 1, 1));
-	gl::drawSolidRect(Rectf(Vec2f(0, 0), Vec2f(sliderValue * getWindowWidth(), getWindowHeight())));
+	gl::drawSolidRect(Rectf(vec2(0, 0), vec2(sliderValue * getWindowWidth(), getWindowHeight())));
 }
-
-void _TBOX_PREFIX_App::processMidiMessage(midi::Message* message){
-	console() << "midi port: " << message->port << " ch: " << message->channel << " status: " << message->status;
-	console() << " byteOne: " << message->byteOne << " byteTwo: " << message->byteTwo << std::endl;
-	
-	switch (message->status) {
-		case MIDI_CONTROL_CHANGE:
-			if (message->byteOne == SLIDER_NOTE){
-				sliderValue = message->byteTwo / 127.0f;
-			}
-			break;
-	}
-}
-
-
 
 // This line tells Cinder to actually create the application
-CINDER_APP_BASIC( _TBOX_PREFIX_App, RendererGl )
+CINDER_APP_NATIVE( _TBOX_PREFIX_App, RendererGl )

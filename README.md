@@ -52,7 +52,7 @@ Using
 
 **Missing "openPort(string nameOfThePort)" function:** this is just something I was using before by some terrible workaround but it was on my to do list. Now I found some way how to do this using C++ 11 (namely std::string.find), so in theory, it should work even when you specify just fragment of port name (like "BCR" instead of "BCR2000 MIDI INPUT").
 
-Thanks to Thomas Sanchez Lengeling for providing testing and changes to make block work on OSX!
+Thanks to <a href="https://github.com/ThomasLengeling">Thomas Sanchez Lengeling</a> for providing testing and changes to make block work on OSX!
 
 ###TODO:
 

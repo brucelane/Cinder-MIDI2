@@ -5,8 +5,7 @@
 	id="mb.cinder.midi2"
 	author="Martin Blasko"
 	license="GPL"
-	summary="Midi block for Cinder developed by Bruce Lane, Martin Blasko. Original code by Hecqspec. Midi parsing taken from ofxMidi by Theo Watson & Dan Wilcox
-	"
+	summary="Midi block for Cinder developed by Bruce Lane, Martin Blasko. Original code by Hecqspec. Midi parsing taken from ofxMidi by Theo Watson &amp; Dan Wilcox"
 	url="https://github.com/MartinBspheroid/Cinder-MIDI2"
 	git="https://github.com/MartinBspheroid/Cinder-MIDI2.git"
 	>

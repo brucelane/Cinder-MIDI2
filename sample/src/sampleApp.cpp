@@ -1,9 +1,9 @@
-#include "cinder/app/AppNative.h"
+#include "cinder/app/App.h"
+#include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "cinder/Utilities.h"
-#include "MidiIn.h"
-#include "MidiConstants.h"
-#include "MidiMessage.h"
+#include "CinderMidi.h"
+
 #include "cinder/Font.h"
 
 using namespace ci;
@@ -12,7 +12,7 @@ using namespace std;
 
 #define TAU M_PI*2
 
-class MidiTestApp : public AppNative {
+class MidiTestApp : public App {
   public:
 	void setup();
 	void mouseDown( MouseEvent event );	
@@ -20,9 +20,9 @@ class MidiTestApp : public AppNative {
 	void draw();
 	void initPads();
 	
-	void midiListener(midi::Message msg);
+	void midiListener(midi::MidiMessage msg);
 
-	midi::Input mInput;
+	midi::MidiInput mInput;
 	vector <int> notes;
 	vector <int> cc;
 
@@ -31,20 +31,20 @@ class MidiTestApp : public AppNative {
 	
 };
 
-void MidiTestApp::midiListener(midi::Message msg){
-	switch (msg.status)
+void MidiTestApp::midiListener(midi::MidiMessage msg){
+	switch (msg.StatusCode)
 	{
 	case MIDI_NOTE_ON:
-		notes[msg.pitch] = msg.velocity;
-		status = "Pitch: " + toString(msg.pitch) + "\n" + 
-			"Velocity: " + toString(msg.velocity);
+		notes[msg.Pitch] = msg.Velocity;
+		status = "Pitch: " + toString(msg.Pitch) + "\n" + 
+			"Velocity: " + toString(msg.Velocity);
 		break;
 	case MIDI_NOTE_OFF:
 		break;
 	case MIDI_CONTROL_CHANGE:
-		cc[msg.control] = msg.value;
-		status = "Control: " + toString(msg.control) + "\n" + 
-			"Value: " + toString(msg.value);
+		cc[msg.Control] = msg.Value;
+		status = "Control: " + toString(msg.Control) + "\n" + 
+			"Value: " + toString(msg.Value);
 		break;
 	default:
 		break;
@@ -55,15 +55,15 @@ void MidiTestApp::midiListener(midi::Message msg){
 void MidiTestApp::setup()
 {
 	
-	mInput.listPorts();
-	console() << "NUMBER OF PORTS: " << mInput.getNumPorts() << endl;
-	for (int i = 0; i < mInput.getNumPorts(); i++)
+	mInput.GetPortList();
+	console() << "NUMBER OF PORTS: " << mInput.mPortCount << endl;
+	for (int i = 0; i < mInput.mPortCount; i++)
 	{
-		console() << mInput.getPortName(i) << endl;
+		console() << mInput.GetPortName(i) << endl;
 	}
-	mInput.openPort(0);
+	mInput.OpenPort(0);
 
-	mInput.midiSignal.connect(boost::bind(&MidiTestApp::midiListener, this, boost::arg<1>::arg()));
+	mInput.mMidiInCallback = std::bind(&MidiTestApp::midiListener, this, std::placeholders::_1);
 
 
 	for (int i = 0; i < 127; i++)
@@ -96,10 +96,10 @@ void MidiTestApp::draw()
 		float ly = (200 - cc[i])*cos((i*2.83) * M_PI / 180);
 
 		gl::color(Color(1,1,1));
-		gl::drawStrokedCircle(Vec2f(x, y), 5+(notes[i]/4));
-		gl::drawLine(Vec2f(x,y), Vec2f(lx, ly));
+		gl::drawStrokedCircle(vec2(x, y), 5+(notes[i]/4));
+		gl::drawLine(vec2(x, y), vec2(lx, ly));
 		gl::color(Color(notes[i], notes[i], notes[i]));
-		gl::drawSolidCircle(Vec2f(x, y), 5+(notes[i]/4));
+		gl::drawSolidCircle(vec2(x, y), 5 + (notes[i] / 4));
 		
 	}
 	
@@ -110,4 +110,4 @@ void MidiTestApp::draw()
 
 
 
-CINDER_APP_NATIVE( MidiTestApp, RendererGl )
+CINDER_APP( MidiTestApp, RendererGl )

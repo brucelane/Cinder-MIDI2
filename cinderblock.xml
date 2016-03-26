@@ -5,7 +5,7 @@
 	id="mb.cinder.midi2"
 	author="Martin Blasko"
 	license="GPL"
-	summary="Midi block for Cinder developed by Bruce Lane, Martin Blasko. Original code by Hecqspec. Midi parsing taken from ofxMidi by Theo Watson & Dan Wilcox
+	summary="Midi block for Cinder developed by Bruce Lane, Martin Blasko, Hunter Luisi. Original code by Hecqspec. Midi parsing taken from ofxMidi by Theo Watson &amp; Dan Wilcox
 	"
 	url="https://github.com/MartinBspheroid/Cinder-MIDI2"
 	git="https://github.com/MartinBspheroid/Cinder-MIDI2.git"
@@ -17,23 +17,21 @@
 	<includePath>lib</includePath>
 	<includePath>src</includePath>
 
-	<header>include/MidiConstants.h</header>
+	<header>include/CinderMidi.h</header>
 	<header>include/MidiExceptions.h</header>
-	<header>include/MidiHeaders.h</header>
 	<header>include/MidiHub.h</header>
-	<header>include/MidiIn.h</header>
-	<header>include/MidiMessage.h</header>
 	<header>include/MidiOut.h</header>
-	<header>lib/RtError.h</header>
 	<header>lib/RtMidi.h</header>
-	<source>src/MidiHub.cpp</source>
-	<source>src/MidiIn.cpp</source>
-	<source>src/MidiMessage.cpp</source>
-	<source>src/MidiOut.cpp</source>
 	<source>lib/RtMidi.cpp</source>
+	<source>src/MidiHub.cpp</source>
+	<source>src/CinderMidi.cpp</source>
+	<source>src/MidiOut.cpp</source>
 
 	<platform os="macosx">
 		<framework sdk="true">CoreMIDI.framework</framework>
+	</platform>
+	<platform os="msw">
+		<staticLibrary absolute="true">winmm.lib</staticLibrary>
 	</platform>
 
 </block>

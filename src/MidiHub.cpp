@@ -47,7 +47,7 @@ namespace cinder { namespace midi {
 	
 	// --------------------------------------------------------------------------------------
 	void Hub::disconnectAll() {
-		for ( int i = 0 ; i < midiInPool.size() ; i++ )
+		for ( size_t i = 0 ; i < midiInPool.size() ; i++ )
 			delete midiInPool[i];
 		midiInPool.clear();
 		/*
@@ -60,7 +60,7 @@ namespace cinder { namespace midi {
 	// --------------------------------------------------------------------------------------
 	void Hub::connectAll() {
 		
-		for ( int i = 0 ; i < midii.getPortCount() ; i++ )
+		for ( unsigned int i = 0 ; i < midii.getPortCount() ; i++ )
 		{
 			if (this->isDeviceConnected(midii.getPortName(i)))
 				continue;
@@ -68,8 +68,8 @@ namespace cinder { namespace midi {
 			printf("MIDI HUB: connecting to %i: %s\n",i,midii.getPortName(i).c_str());
 			
 			// Connect IN
-			midi::Input *in = new midi::Input();
-			in->openPort(i);
+			midi::MidiInput *in = new midi::MidiInput();
+			in->OpenPort(i);
 			midiInPool.push_back(in);
 			
 			// Connect OUT
@@ -99,8 +99,8 @@ namespace cinder { namespace midi {
 	
 	// --------------------------------------------------------------------------------------
 	bool Hub::isDeviceConnected(std::string _name) {
-		for (int i = 0 ; i < midiInPool.size() ; i++)
-			if (midiInPool[i]->getName() == _name)
+    for ( size_t i = 0; i < midiInPool.size(); i++ )
+      if ( midiInPool[i]->mPortName == _name )
 				return true;
 		/*
 		 for (int i = 0 ; i < midiOutPool.size() ; i++)

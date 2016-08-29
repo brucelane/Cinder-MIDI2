@@ -121,7 +121,6 @@ enum LpControl_ {
   LpControl_Amber_High = ( LP_AMBER_HIGHBITS_ON | LP_AMBER_LOWBITS_ON | LP_COPY_AND_CLEAR_ON )
 };
 
-
 namespace cinder { namespace midi {
 
   //! ---- Structure for the passing of midi messages ---- !//

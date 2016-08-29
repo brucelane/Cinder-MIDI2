@@ -34,7 +34,7 @@ namespace cinder { namespace midi {
   MidiInput::MidiInput() {
     //RT_MidiIn = nullptr;
     try {
-      MidiIn = std::make_unique<RtMidiIn>();
+      MidiIn = std::unique_ptr<RtMidiIn>();
     } catch ( RtMidiError &error ) {
       // Handle the exception here
       error.printMessage();
@@ -153,7 +153,7 @@ namespace cinder { namespace midi {
   MidiOutput::MidiOutput( std::string name /*= "Cinder-MIDI Client"*/ )
     : Name(name), PortNumber(-1), IsVirtual(false), Bytes(3) {
     try {
-      MidiOut = std::make_unique<RtMidiOut>();
+      MidiOut = std::unique_ptr<RtMidiOut>();
     } catch ( RtMidiError &error ) {
       error.printMessage();
     }

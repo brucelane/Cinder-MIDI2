@@ -194,6 +194,92 @@ namespace cinder {
 		{
 			MidiOut->closePort();
 		}
+
+		/// \section Sending
+
+		///
+		/// midi events
+		///
+		/// number ranges:
+		///		channel			1 - 16
+		///		pitch			0 - 127
+		///		velocity		0 - 127
+		///		control value	0 - 127
+		///		program value	0 - 127
+		///		bend value		0 - 16383
+		///		touch value		0 - 127
+		///
+		/// note:
+		///		- a noteon with vel = 0 is equivalent to a noteoff
+		///		- send velocity = 64 if not using velocity values
+		///		- most synths don't use the velocity value in a noteoff
+		///		- the lsb & msb for raw pitch bend bytes are 7 bit
+		///
+		/// references:
+		///		http://www.srm.com/qtma/davidsmidispec.html
+		///
+		void MidiOutput::sendMessage(unsigned char status, unsigned char byteOne, unsigned char byteTwo)
+		{
+			assert(Bytes.size() == 3);
+			Bytes[0] = status;
+			Bytes[1] = byteOne;
+			Bytes[2] = byteTwo;
+			sendMessage(Bytes);
+		}
+
+		void MidiOutput::sendMessage(unsigned char status, unsigned char byteOne)
+		{
+			assert(Bytes.size() == 3);
+			Bytes.resize(2);
+			Bytes[0] = status;
+			Bytes[1] = byteOne;
+			sendMessage(Bytes);
+			Bytes.resize(3); // restore invariant
+		}
+
+		void MidiOutput::sendMessage(std::vector<unsigned char>& bytes)
+		{
+			MidiOut->sendMessage(&bytes);
+		}
+
+		void MidiOutput::sendNoteOn(int channel, int pitch, int velocity)
+		{
+			sendMessage(MIDI_NOTE_ON + channel - 1, pitch, velocity);
+		}
+		void MidiOutput::sendNoteOff(int channel, int pitch, int velocity)
+		{
+			sendMessage(MIDI_NOTE_OFF + channel - 1, pitch, velocity);
+		}
+		void MidiOutput::sendControlChange(int channel, int control, int value)
+		{
+			sendMessage(MIDI_CONTROL_CHANGE + channel - 1, control, value);
+		}
+		void MidiOutput::sendProgramChange(int channel, int value)
+		{
+			sendMessage(MIDI_PROGRAM_CHANGE + channel - 1, value);
+		}
+		void MidiOutput::sendPitchBend(int channel, int value)
+		{
+			if (value >> 14 != 0)
+			{
+				std::cout << "[ERROR ci::midi::MidiOut::sendPitchBend] Pitch bend values must be less than " << (1 << 14) << std::endl;
+			}
+			// least significant 7 bits, most significant 7 bits (assuming 14 bit value)
+			sendPitchBend(channel, value & 0x7F, (value >> 7) & 0x7F);
+		}
+		void MidiOutput::sendPitchBend(int channel, unsigned char lsb, unsigned char msb)
+		{
+			sendMessage(MIDI_PITCH_BEND, lsb, msb);
+		}
+		void MidiOutput::sendAftertouch(int channel, int value)
+		{
+			sendMessage(MIDI_AFTERTOUCH + channel - 1, value);
+		}
+		void MidiOutput::sendPolyAftertouch(int channel, int pitch, int value)
+		{
+			sendMessage(MIDI_POLY_AFTERTOUCH + channel - 1, pitch, value);
+		}
+
 		//------------------------------------------------------------------
 		//  Midi Hub
 		//------------------------------------------------------------------

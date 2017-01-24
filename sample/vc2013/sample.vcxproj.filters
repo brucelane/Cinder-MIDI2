@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -38,40 +39,19 @@
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\MidiConstants.h">
-      <Filter>Blocks\Midi2\include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\include\MidiExceptions.h">
-      <Filter>Blocks\Midi2\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\MidiHeaders.h">
       <Filter>Blocks\Midi2\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\MidiHub.h">
       <Filter>Blocks\Midi2\include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\MidiIn.h">
-      <Filter>Blocks\Midi2\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\MidiMessage.h">
-      <Filter>Blocks\Midi2\include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\include\MidiOut.h">
       <Filter>Blocks\Midi2\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib\RtError.h">
-      <Filter>Blocks\Midi2\lib</Filter>
     </ClInclude>
     <ClInclude Include="..\..\lib\RtMidi.h">
       <Filter>Blocks\Midi2\lib</Filter>
     </ClInclude>
     <ClCompile Include="..\..\src\MidiHub.cpp">
-      <Filter>Blocks\Midi2\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\MidiIn.cpp">
-      <Filter>Blocks\Midi2\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\MidiMessage.cpp">
       <Filter>Blocks\Midi2\src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\MidiOut.cpp">
@@ -80,10 +60,16 @@
     <ClCompile Include="..\..\lib\RtMidi.cpp">
       <Filter>Blocks\Midi2\lib</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\CinderMidi.cpp">
+      <Filter>Blocks\Midi2\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\CinderMidi.h">
+      <Filter>Blocks\Midi2\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

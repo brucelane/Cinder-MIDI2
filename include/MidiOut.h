@@ -26,14 +26,8 @@ Midi parsing taken from openFrameworks addon ofxMidi by Theo Watson & Dan Wilcox
 
 #pragma once
 
-#include "MidiHeaders.h"
-#include "cinder/app/AppBasic.h"
-
-/*#include "MidiConstants.h"
-#include "RtMidi.h"
-#include "MidiExceptions.h"
-#include "MidiMessage.h"
-*/
+#include "cinder/app/App.h"
+#include "CinderMidi.h"
 
 namespace cinder { namespace midi {
 ///
@@ -107,9 +101,9 @@ public:
 	///		touch value		0 - 127
 	///
 	/// note:
-	///		- a noteon with vel = 0 is equivalent to a noteoff
+	///		- a note on with vel = 0 is equivalent to a note off
 	///		- send velocity = 64 if not using velocity values
-	///		- most synths don't use the velocity value in a noteoff
+	///		- most synths don't use the velocity value in a note off
 	///		- the lsb & msb for raw pitch bend bytes are 7 bit
 	///
 	/// references:

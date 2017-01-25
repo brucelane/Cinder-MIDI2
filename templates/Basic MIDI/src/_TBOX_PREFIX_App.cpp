@@ -20,7 +20,7 @@
 
 // don't forget to add winmm.lib to the linker
 
-#include "cinder/app/AppNative.h"
+#include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/Utilities.h"
 #include <list>
@@ -35,9 +35,8 @@ using namespace std;
 #define SLIDER_NOTE 1
 
 
-class _TBOX_PREFIX_App : public AppNative {
+class _TBOX_PREFIX_App : public App {
  public:
-	void prepareSettings(Settings* settings);
 	void setup();
 	void update();
 	void draw();
@@ -50,11 +49,6 @@ class _TBOX_PREFIX_App : public AppNative {
 	int notes[128];
 	int cc[128];
 };
-
-void _TBOX_PREFIX_App::prepareSettings(Settings* settings){
-	settings->setFrameRate(50.0f);
-	settings->setWindowSize(640, 480);
-}
 
 void _TBOX_PREFIX_App::setup(){
 	
@@ -79,6 +73,7 @@ void _TBOX_PREFIX_App::midiListener(midi::Message msg){
       break;
   case MIDI_CONTROL_CHANGE:
       cc[msg.control] = msg.value;
+	  sliderValue = msg.value / 127.0f;
       status = "Control: " + toString(msg.control) + "\n" + 
           "Value: " + toString(msg.value);
       break;
@@ -97,5 +92,4 @@ void _TBOX_PREFIX_App::draw(){
 	gl::drawSolidRect(Rectf(vec2(0, 0), vec2(sliderValue * getWindowWidth(), getWindowHeight())));
 }
 
-// This line tells Cinder to actually create the application
-CINDER_APP_NATIVE( _TBOX_PREFIX_App, RendererGl )
+CINDER_APP( _TBOX_PREFIX_App, RendererGl )

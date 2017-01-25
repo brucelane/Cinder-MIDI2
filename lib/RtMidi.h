@@ -8,7 +8,7 @@
     RtMidi WWW site: http://music.mcgill.ca/~gary/rtmidi/
 
     RtMidi: realtime MIDI i/o C++ classes
-    Copyright (c) 2003-2014 Gary P. Scavone
+    Copyright (c) 2003-2016 Gary P. Scavone
 
     Permission is hereby granted, free of charge, to any person
     obtaining a copy of this software and associated documentation files
@@ -43,7 +43,7 @@
 #ifndef RTMIDI_H
 #define RTMIDI_H
 
-#define RTMIDI_VERSION "2.1.0"
+#define RTMIDI_VERSION "2.1.1"
 
 #include <exception>
 #include <iostream>
@@ -566,9 +566,6 @@ inline void RtMidiOut :: setErrorCallback( RtMidiErrorCallback errorCallback, vo
 // MidiInApi and MidiOutApi subclass prototypes.
 //
 // **************************************************************** //
-#if !defined(__CINDER_MIDI__)
-#include "CinderMidi.h"
-#endif
 
 #if !defined(__LINUX_ALSA__) && !defined(__UNIX_JACK__) && !defined(__MACOSX_CORE__) && !defined(__WINDOWS_MM__)
   #define __RTMIDI_DUMMY__

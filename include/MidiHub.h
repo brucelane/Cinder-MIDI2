@@ -28,16 +28,15 @@
 
 #pragma once
 
-//#include "MidiHeaders.h"
+#include "MidiHeaders.h"
 /*#include "MidiConstants.h"
 #include "MidiIn.h"
 //#include "MidiOut.h"
 #include "MidiMessage.h"*/
-#include "CinderMidi.h"
 
 namespace cinder { namespace midi {	
 	
-  struct MidiInput;
+    class Input;
     
 	class Hub {
 	public:
@@ -48,7 +47,7 @@ namespace cinder { namespace midi {
 		void	connectAll();
 		void	update();
 		
-		int		getConnectedDeviceCount()	{ return (int) midiInPool.size(); };
+		int		getConnectedDeviceCount()	{ return midiInPool.size(); };
 		bool	isConnected()				{ return (midiInPool.size() > 0 ? true : false); };
 		bool	isDeviceConnected( std::string _name );
 		
@@ -59,7 +58,7 @@ namespace cinder { namespace midi {
 		
 		RtMidiIn	midii;
 		
-		std::vector<midi::MidiInput*>	midiInPool;
+		std::vector<midi::Input*>	midiInPool;
 		//vector<midi::Output*>		midiOutPool;
 	};
 	

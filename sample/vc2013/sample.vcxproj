@@ -107,17 +107,21 @@
     <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\CinderMidi.cpp" />
     <ClCompile Include="..\src\sampleApp.cpp" />
     <ClCompile Include="..\..\src\MidiHub.cpp" />
+    <ClCompile Include="..\..\src\MidiIn.cpp" />
+    <ClCompile Include="..\..\src\MidiMessage.cpp" />
     <ClCompile Include="..\..\src\MidiOut.cpp" />
     <ClCompile Include="..\..\lib\RtMidi.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\CinderMidi.h" />
     <ClInclude Include="..\include\Resources.h" />
+    <ClInclude Include="..\..\include\MidiConstants.h" />
     <ClInclude Include="..\..\include\MidiExceptions.h" />
+    <ClInclude Include="..\..\include\MidiHeaders.h" />
     <ClInclude Include="..\..\include\MidiHub.h" />
+    <ClInclude Include="..\..\include\MidiIn.h" />
+    <ClInclude Include="..\..\include\MidiMessage.h" />
     <ClInclude Include="..\..\include\MidiOut.h" />
     <ClInclude Include="..\..\lib\RtMidi.h" />
   </ItemGroup>

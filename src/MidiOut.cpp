@@ -11,6 +11,7 @@
 #include <assert.h>
 #include "MidiOut.h"
 
+
 using namespace cinder::midi;
 using namespace std;
 
@@ -37,7 +38,7 @@ MidiOut::~MidiOut()
 ///		  from the system.
 std::vector<std::string> MidiOut::getPortList() const
 {
-  vector<std::string> portList;
+	vector<string> portList;
 	for(unsigned int i = 0; i < mRtMidiOut->getPortCount(); ++i)
 	{
 		portList.push_back(mRtMidiOut->getPortName(i));
@@ -72,7 +73,7 @@ bool MidiOut::openPort(unsigned int portNumber)
         ss << mName << "Output " << portNumber;
 		mRtMidiOut->openPort( portNumber, ss.str() );
 	}
-	catch(RtMidiError& err)
+	catch (RtMidiError& err)
 	{
         std::cout << "[ERROR ci::midi::MidiOut::openPort] couldn't open port " << portNumber << " " << err.getMessage() << std::endl;
 		return false;
@@ -98,7 +99,7 @@ bool MidiOut::openVirtualPort(std::string const& portName)
 		closePort();
 		mRtMidiOut->openVirtualPort(portName);
 	}
-    catch ( RtMidiError& err ) {
+	catch (RtMidiError& err) {
         std::cout << "[ERROR ci::midi::MidiOut::openVirtualPort] couldn't open virtual port " << portName << " " << err.getMessage() << std::endl;
 		return false;
 	}

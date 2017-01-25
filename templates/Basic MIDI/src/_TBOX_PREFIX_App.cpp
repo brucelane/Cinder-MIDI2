@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2016, Bruce Lane - Martin Blasko - Hunter Luisi All rights reserved.
+ Copyright (c) 2014, Bruce Lane - Martin Blasko All rights reserved.
  This code is intended for use with the Cinder C++ library: http://libcinder.org
 
  This file is part of Cinder-MIDI.
@@ -22,10 +22,11 @@
 
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
-#include "cinder/gl/gl.h"
 #include "cinder/Utilities.h"
 #include <list>
-#include "CinderMidi.h"
+#include "MidiIn.h"
+#include "MidiMessage.h"
+#include "MidiConstants.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -39,9 +40,9 @@ class _TBOX_PREFIX_App : public App {
 	void setup();
 	void update();
 	void draw();
-	void midiListener(midi::MidiMessage msg);
+	void midiListener(midi::Message msg);
 
-	midi::MidiInput mInput;
+	midi::Input mMidiIn;
 	
 	float sliderValue;
 	string status;
@@ -51,32 +52,30 @@ class _TBOX_PREFIX_App : public App {
 
 void _TBOX_PREFIX_App::setup(){
 	
-	mInput.GetPortList();
-	console() << "NUMBER OF PORTS: " << mInput.mPortCount << endl;
-	for (int i = 0; i < mInput.mPortCount; i++)
-	{
-		console() << mInput.GetPortName(i) << endl;
+	if (mMidiIn.getNumPorts() > 0){
+		mMidiIn.listPorts();
+		mMidiIn.openPort(0);
+		console() << "Opening MIDI port 0" << std::endl;
+		mMidiIn.midiSignal.connect(std::bind(&VDRouter::midiListener, this, std::placeholders::_1));
+	}else {
+		console() << "No MIDI Ports found!!!!" << std::endl;
 	}
-	mInput.OpenPort(0);
-
-	mInput.mMidiInCallback = std::bind(&_TBOX_PREFIX_App::midiListener, this, std::placeholders::_1);
-	sliderValue = 0.5;
 }
-void _TBOX_PREFIX_App::midiListener(midi::MidiMessage msg){
-  switch (msg.StatusCode)
+void _TBOX_PREFIX_App::midiListener(midi::Message msg){
+  switch (msg.status)
   {
   case MIDI_NOTE_ON:
-      notes[msg.Pitch] = msg.Velocity;
-      status = "Pitch: " + toString(msg.Pitch) + "\n" + "Velocity: " + toString(msg.Velocity);
-      sliderValue = msg.Pitch / 127.0f;
+      notes[msg.pitch] = msg.velocity;
+      status = "Pitch: " + toString(msg.pitch) + "\n" + "Velocity: " + toString(msg.velocity);
+      sliderValue = msg.pitch / 127.0f;
       break;
   case MIDI_NOTE_OFF:
       break;
   case MIDI_CONTROL_CHANGE:
-      cc[msg.Control] = msg.Value;
-	  sliderValue = msg.Value / 127.0f;
-	  status = "Control: " + toString(msg.Control) + "\n" + 
-          "Value: " + toString(msg.Value);
+      cc[msg.control] = msg.value;
+	  sliderValue = msg.value / 127.0f;
+      status = "Control: " + toString(msg.control) + "\n" + 
+          "Value: " + toString(msg.value);
       break;
   default:
       break;
@@ -89,7 +88,7 @@ void _TBOX_PREFIX_App::update(){
 
 void _TBOX_PREFIX_App::draw(){
 	gl::clear(Color(0,0,0), true);
-	gl::color(Color(0.5, 0, 0.6));
+	gl::color(Color(1, 1, 1));
 	gl::drawSolidRect(Rectf(vec2(0, 0), vec2(sliderValue * getWindowWidth(), getWindowHeight())));
 }
 

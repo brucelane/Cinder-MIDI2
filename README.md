@@ -31,7 +31,7 @@ Using
 
 2. connect signal from MidiInput instance to your function like so:
 
- ```mInput.midiSignal.connect(boost::bind(&MidiTestApp::midiListener, this, boost::arg<1>::arg())); ```
+ ```mInput.midiSignal.connect(std::bind(&MidiTestApp::midiListener, this, std::placeholders::_1)); ```
 
  3. if you are using Windows, you need to add ```winmm.lib``` to your linker
 

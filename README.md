@@ -2,6 +2,7 @@ Cinder-MIDI2
 ============
 
 Alternative approach to interfacing RtMidi lib in Cinder
+For Mac version switch to the "Martin" branch
 
 Using
 ============

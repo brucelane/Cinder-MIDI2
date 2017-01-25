@@ -93,5 +93,4 @@ void _TBOX_PREFIX_App::draw(){
 	gl::drawSolidRect(Rectf(vec2(0, 0), vec2(sliderValue * getWindowWidth(), getWindowHeight())));
 }
 
-// This line tells Cinder to actually create the application
 CINDER_APP( _TBOX_PREFIX_App, RendererGl )

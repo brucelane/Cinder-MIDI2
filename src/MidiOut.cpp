@@ -73,7 +73,7 @@ bool MidiOut::openPort(unsigned int portNumber)
         ss << mName << "Output " << portNumber;
 		mRtMidiOut->openPort( portNumber, ss.str() );
 	}
-	catch(RtError& err)
+	catch (RtMidiError& err)
 	{
         std::cout << "[ERROR ci::midi::MidiOut::openPort] couldn't open port " << portNumber << " " << err.getMessage() << std::endl;
 		return false;
@@ -99,7 +99,7 @@ bool MidiOut::openVirtualPort(std::string const& portName)
 		closePort();
 		mRtMidiOut->openVirtualPort(portName);
 	}
-	catch(RtError& err) {
+	catch (RtMidiError& err) {
         std::cout << "[ERROR ci::midi::MidiOut::openVirtualPort] couldn't open virtual port " << portName << " " << err.getMessage() << std::endl;
 		return false;
 	}

@@ -56,7 +56,7 @@ void _TBOX_PREFIX_App::setup(){
 		mMidiIn.listPorts();
 		mMidiIn.openPort(0);
 		console() << "Opening MIDI port 0" << std::endl;
-		mMidiIn.midiSignal.connect(std::bind(&VDRouter::midiListener, this, std::placeholders::_1));
+		mMidiIn.midiSignal.connect(std::bind(&_TBOX_PREFIX_App::midiListener, this, std::placeholders::_1));
 	}else {
 		console() << "No MIDI Ports found!!!!" << std::endl;
 	}

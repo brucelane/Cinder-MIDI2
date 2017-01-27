@@ -30,7 +30,15 @@ Midi parsing taken from openFrameworks addon ofxMidi by Theo Watson & Dan Wilcox
 
 
 #pragma once
-
+#if defined( CINDER_MSW )
+#define __WINDOWS_MM__
+#endif
+#if defined( CINDER_MAC )
+#define __MACOSX_CORE__
+#endif
+#if defined( CINDER_LINUX )
+#define __LINUX_ALSA__
+#endif
 #include <vector>
 #include <string>
 #include <iostream>
@@ -44,6 +52,7 @@ Midi parsing taken from openFrameworks addon ofxMidi by Theo Watson & Dan Wilcox
 #include "MidiExceptions.h"
 #include "MidiMessage.h"
 */
+
 
 
 namespace cinder { namespace midi {

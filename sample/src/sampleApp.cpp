@@ -31,7 +31,9 @@ class MidiTestApp : public App {
 	
 };
 
-void MidiTestApp::midiListener(midi::Message msg){
+void MidiTestApp::midiListener(midi::Message msg)
+{
+    // This will be called from a background thread
 	switch (msg.status)
 	{
 	case MIDI_NOTE_ON:
@@ -55,17 +57,18 @@ void MidiTestApp::midiListener(midi::Message msg){
 
 void MidiTestApp::setup()
 {
-	
 	mInput.listPorts();
 	console() << "NUMBER OF PORTS: " << mInput.getNumPorts() << endl;
+    
 	if (mInput.getNumPorts() > 0) 
 	{
 		for (int i = 0; i < mInput.getNumPorts(); i++)
-		{
 			console() << mInput.getPortName(i) << endl;
-		}
+		
 		mInput.openPort(0);
-
+        
+        // Connect midi signal to our callback function
+        // (This will get called on a background thread so be aware of race conditions!)
 		mInput.midiSignal.connect(std::bind(&MidiTestApp::midiListener, this, std::placeholders::_1));
 	}
 
@@ -74,6 +77,7 @@ void MidiTestApp::setup()
 		notes.push_back(0);
 		cc.push_back(0);
 	}
+    
 	mFont = Font("Arial", 25);
 }
 

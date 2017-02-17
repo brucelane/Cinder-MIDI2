@@ -568,7 +568,7 @@ inline void RtMidiOut :: setErrorCallback( RtMidiErrorCallback errorCallback, vo
 //
 // **************************************************************** //
 
-// Cinder Platform
+// Cinder Platform definitions
 #if defined( CINDER_LINUX )
 	#define __LINUX_ALSASEQ__
 #elif defined( CINDER_MSW )

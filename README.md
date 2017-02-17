@@ -4,12 +4,9 @@ Cinder-MIDI2
 Alternative approach to interfacing RtMidi lib in Cinder
 Using
 ============
-Define preprocessor 
- __WINDOWS_MM__ on Windows
-__MACOSX_CORE__ on Mac OSX
- __LINUX_ALSA__ on Linux
  
 1. Create void function in your app, that will be reacting to incoming midi-messages:
+(This will be called on a background thread so be aware of race conditions with update() and draw())
 
  ```cpp
  

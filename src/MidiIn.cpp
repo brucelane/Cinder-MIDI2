@@ -113,7 +113,6 @@ namespace cinder { namespace midi {
 				break;
 			}
         
-            // TODO: Ensure thread safety (or stick with boost)
             midiSignal.emit( msg );
 		}
 

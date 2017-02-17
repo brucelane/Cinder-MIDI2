@@ -27,16 +27,7 @@ Midi parsing taken from openFrameworks addon ofxMidi by Theo Watson & Dan Wilcox
 
 
 #pragma once
-//
-#if defined( linux )
-#warning "Using MIDI LINUX"
-	#define __LINUX_ALSASEQ__
-#elif defined(WIN32)
-	#define __WINDOWS_MM__
-#elif defined(__APPLE__)
-#warning "Using MIDI MAC"
-	#define __MACOSX_CORE__
-#endif
+
 
 
 // channel info

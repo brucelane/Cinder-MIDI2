@@ -26,14 +26,10 @@ Midi parsing taken from openFrameworks addon ofxMidi by Theo Watson & Dan Wilcox
 
 #pragma once
 
-//#include "MidiHeaders.h"
 #include "cinder/app/App.h"
-#include "RtMidi.h"
 
-#include "MidiConstants.h"
-/*#include "MidiExceptions.h"
-#include "MidiMessage.h"
-*/
+#include "MidiHeaders.h"
+
 
 namespace cinder { namespace midi {
 ///

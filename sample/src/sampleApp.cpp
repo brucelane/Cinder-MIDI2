@@ -2,9 +2,8 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "cinder/Utilities.h"
-#include "MidiIn.h"
-#include "MidiConstants.h"
-#include "MidiMessage.h"
+
+#include "MidiHeaders.h"
 #include "cinder/Font.h"
 
 using namespace ci;

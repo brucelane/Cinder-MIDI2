@@ -29,8 +29,6 @@ POSSIBILITY OF SUCH DAMAGE.
 #pragma once
 
 
-
-
 namespace cinder { namespace midi {
 
 	class Message {

@@ -50,6 +50,7 @@
 #include <string>
 #include <vector>
 
+
 /************************************************************************/
 /*! \class RtMidiError
     \brief Exception handling class for RtMidi.
@@ -566,6 +567,15 @@ inline void RtMidiOut :: setErrorCallback( RtMidiErrorCallback errorCallback, vo
 // MidiInApi and MidiOutApi subclass prototypes.
 //
 // **************************************************************** //
+
+// Cinder Platform
+#if defined( CINDER_LINUX )
+	#define __LINUX_ALSASEQ__
+#elif defined( CINDER_MSW )
+	#define __WINDOWS_MM__
+#elif defined( CINDER_MAC )
+	#define __MACOSX_CORE__
+#endif
 
 #if !defined(__LINUX_ALSA__) && !defined(__UNIX_JACK__) && !defined(__MACOSX_CORE__) && !defined(__WINDOWS_MM__)
   #define __RTMIDI_DUMMY__

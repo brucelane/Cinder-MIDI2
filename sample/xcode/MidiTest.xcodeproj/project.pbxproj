@@ -58,7 +58,6 @@
 		8D1107320486CEB800E47090 /* MidiTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MidiTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97645778D955423C813975E1 /* MidiIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiIn.h; path = ../../include/MidiIn.h; sourceTree = "<group>"; };
 		9F20344637F641D3A05CAC3C /* MidiHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiHub.h; path = ../../include/MidiHub.h; sourceTree = "<group>"; };
-		B5C7F470885A48289F6665F7 /* RtError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RtError.h; path = ../../lib/RtError.h; sourceTree = "<group>"; };
 		B6CE3523F9E74055B55061CF /* MidiTest_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = MidiTest_Prefix.pch; sourceTree = "<group>"; };
 		BED3AFF3A43D4C0DA3E9541F /* MidiConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiConstants.h; path = ../../include/MidiConstants.h; sourceTree = "<group>"; };
 		E47846BE6A934F11B55BFE72 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
@@ -218,7 +217,6 @@
 		F3560099658D4D859B0F29C5 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				B5C7F470885A48289F6665F7 /* RtError.h */,
 				6121441195434238986FF026 /* RtMidi.h */,
 				031195969B714B93942EC19C /* RtMidi.cpp */,
 			);

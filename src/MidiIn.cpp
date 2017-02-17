@@ -112,7 +112,9 @@ namespace cinder { namespace midi {
 			default:
 				break;
 			}
-			midiSignal(msg);
+        
+            // TODO: Ensure thread safety (or stick with boost)
+            midiSignal.emit( msg );
 		}
 
 		// bool Input::hasWaitingMessages(){

@@ -2,9 +2,8 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "cinder/Utilities.h"
-#include "MidiIn.h"
-#include "MidiConstants.h"
-#include "MidiMessage.h"
+
+#include "MidiHeaders.h"
 #include "cinder/Font.h"
 
 using namespace ci;
@@ -41,6 +40,7 @@ void MidiTestApp::midiListener(midi::Message msg){
 			"Velocity: " + toString(msg.velocity);
 		break;
 	case MIDI_NOTE_OFF:
+        notes[msg.pitch] = 0;
 		break;
 	case MIDI_CONTROL_CHANGE:
 		cc[msg.control] = msg.value;
@@ -91,6 +91,7 @@ void MidiTestApp::draw()
 	gl::clear( Color( 0, 0, 0 ) );
 	gl::pushMatrices();
 	gl::translate(getWindowCenter());
+    
 	for (int i = 0; i < notes.size(); i++)
 	{
 		float x = 200*sin((i*2.83) * M_PI / 180);
@@ -113,4 +114,7 @@ void MidiTestApp::draw()
 
 
 
-CINDER_APP( MidiTestApp, RendererGl )
+CINDER_APP( MidiTestApp, RendererGl( RendererGl::Options().msaa( 4 ) ), [](App::Settings* settings)
+{
+    settings->setWindowSize( 600, 600 );
+} )

@@ -113,7 +113,10 @@ namespace cinder { namespace midi {
 				break;
 			}
         
-            midiSignal.emit( msg );
+            midiThreadSignal.emit( msg );
+        
+            if (mDispatchToMainThread)
+                ci::app::App::get()->dispatchAsync( [this, msg](){ midiSignal.emit( msg ); });
 		}
 
 		// bool Input::hasWaitingMessages(){

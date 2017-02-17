@@ -20,7 +20,8 @@ class MidiTestApp : public App {
 	void draw();
 	void initPads();
 	
-	void midiListener(midi::Message msg);
+	void midiListener( midi::Message msg );
+    void midiThreadListener( midi::Message msg );
 
 	midi::Input mInput;
 	vector <int> notes;
@@ -31,9 +32,16 @@ class MidiTestApp : public App {
 	
 };
 
-void MidiTestApp::midiListener(midi::Message msg)
+void MidiTestApp::midiThreadListener( midi::Message msg )
 {
-    // This will be called from a background thread
+    // This will be called from a background midi thread
+}
+
+void MidiTestApp::midiListener( midi::Message msg )
+{
+    // This will be called on on the main thread and
+    // safe to use with update and draw.
+    
 	switch (msg.status)
 	{
 	case MIDI_NOTE_ON:
@@ -68,9 +76,12 @@ void MidiTestApp::setup()
 		mInput.openPort(0);
         
         // Connect midi signal to our callback function
-        // (This will get called on a background thread so be aware of race conditions!)
-		mInput.midiSignal.connect(std::bind(&MidiTestApp::midiListener, this, std::placeholders::_1));
-	}
+        // This connects to our main thread
+		mInput.midiSignal.connect( [this](midi::Message msg){ midiListener( msg ); });
+        
+        // Optionally, this connects directly to the midi thread
+        mInput.midiThreadSignal.connect( [this](midi::Message msg){ midiThreadListener( msg ); });
+    }
 
 	for (int i = 0; i < 127; i++)
 	{

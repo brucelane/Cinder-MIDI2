@@ -37,6 +37,7 @@ Midi parsing taken from openFrameworks addon ofxMidi by Theo Watson & Dan Wilcox
 
 #include "MidiHeaders.h"
 #include "cinder/Signals.h"
+#include "cinder/ConcurrentCircularBuffer.h"
 
 
 
@@ -53,6 +54,8 @@ public:
 	void listPorts();
 	void openPort(unsigned int port = 0);
 	void closePort();
+    
+    void setDispatchToMainThread(bool shouldDispatch) { mDispatchToMainThread = shouldDispatch; }
 	
 	unsigned int getNumPorts()const{ return mNumPorts; }
 	unsigned int getPort()const;
@@ -61,21 +64,19 @@ public:
 	std::vector<std::string> mPortNames;
 	std::string getName()	{ return mName; };
 	std::string getPortName(int number);
-    signals::Signal<void(Message)> midiSignal;
+    
+    signals::Signal<void(Message)>      midiThreadSignal;   // Will be called from the Midi thread
+    signals::Signal<void(Message)>      midiSignal;         // Will be called from the Main thread
 	
-	//typedef boost::signal<void (Message*)> signal_t;
-	// bool hasWaitingMessages();
-	//signal_t mSignal;
-	// bool getNextMessage(Message*);
 
 protected:
 	
-	RtMidiIn *mMidiIn;
-	unsigned int mNumPorts;
-	unsigned int mPort;
-	std::string mName;
-	//std::deque<Message*> mMessages;
-
+	RtMidiIn*       mMidiIn;
+	unsigned int    mNumPorts;
+	unsigned int    mPort;
+	std::string     mName;
+    
+    bool            mDispatchToMainThread { true };
 
 };
 

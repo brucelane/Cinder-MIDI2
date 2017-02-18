@@ -4,10 +4,6 @@ Cinder-MIDI2
 Alternative approach to interfacing RtMidi lib in Cinder
 Using
 ============
-Define preprocessor 
- __WINDOWS_MM__ on Windows
-__MACOSX_CORE__ on Mac OSX
- __LINUX_ALSA__ on Linux
  
 1. Create void function in your app, that will be reacting to incoming midi-messages:
 
@@ -35,7 +31,11 @@ __MACOSX_CORE__ on Mac OSX
 
 2. connect signal from MidiInput instance to your function like so:
 
- ```mInput.midiSignal.connect(std::bind(&MidiTestApp::midiListener, this, std::placeholders::_1)); ```
+ ```mInput.midiSignal.connect( [this](midi::Message msg){ MidiTestApp::midiListener( msg ); }); ```
+
+ this will push the incoming midi messages safely over onto the main thread for consumption. You can however also get a signal directly from the midi thread if you need like so: 
+
+ ```mInput.midiThreadSignal.connect( [this](midi::Message msg){ MidiTestApp::midiListener( msg ); }); ```
 
  3. if you are using Windows, you need to add ```winmm.lib``` to your linker
 

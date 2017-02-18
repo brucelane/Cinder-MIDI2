@@ -20,7 +20,8 @@ class MidiTestApp : public App {
 	void draw();
 	void initPads();
 	
-	void midiListener(midi::Message msg);
+	void midiListener( midi::Message msg );
+    void midiThreadListener( midi::Message msg );
 
 	midi::Input mInput;
 	vector <int> notes;
@@ -31,7 +32,16 @@ class MidiTestApp : public App {
 	
 };
 
-void MidiTestApp::midiListener(midi::Message msg){
+void MidiTestApp::midiThreadListener( midi::Message msg )
+{
+    // This will be called from a background midi thread
+}
+
+void MidiTestApp::midiListener( midi::Message msg )
+{
+    // This will be called on on the main thread and
+    // safe to use with update and draw.
+    
 	switch (msg.status)
 	{
 	case MIDI_NOTE_ON:
@@ -55,25 +65,30 @@ void MidiTestApp::midiListener(midi::Message msg){
 
 void MidiTestApp::setup()
 {
-	
 	mInput.listPorts();
 	console() << "NUMBER OF PORTS: " << mInput.getNumPorts() << endl;
+    
 	if (mInput.getNumPorts() > 0) 
 	{
 		for (int i = 0; i < mInput.getNumPorts(); i++)
-		{
 			console() << mInput.getPortName(i) << endl;
-		}
+		
 		mInput.openPort(0);
-
-		mInput.midiSignal.connect(std::bind(&MidiTestApp::midiListener, this, std::placeholders::_1));
-	}
+        
+        // Connect midi signal to our callback function
+        // This connects to our main thread
+		mInput.midiSignal.connect( [this](midi::Message msg){ midiListener( msg ); });
+        
+        // Optionally, this connects directly to the midi thread
+        mInput.midiThreadSignal.connect( [this](midi::Message msg){ midiThreadListener( msg ); });
+    }
 
 	for (int i = 0; i < 127; i++)
 	{
 		notes.push_back(0);
 		cc.push_back(0);
 	}
+    
 	mFont = Font("Arial", 25);
 }
 

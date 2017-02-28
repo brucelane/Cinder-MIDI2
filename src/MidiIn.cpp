@@ -117,8 +117,8 @@ namespace cinder { namespace midi {
         
             if (mDispatchToMainThread)
                 ci::app::App::get()->dispatchAsync( [this, msg](){ midiSignal.emit( msg ); });
-		std::vector<unsigned char> mess = *message;
-                ci::app::App::get()->dispatchAsync( [this, mess ](){ midiRawSignal.emit( mess ); });
+		std::vector<unsigned char> rawMsg = *message;
+                ci::app::App::get()->dispatchAsync( [this, rawMsg ](){ midiRawSignal.emit( rawMsg ); });
 		}
 
 		// bool Input::hasWaitingMessages(){

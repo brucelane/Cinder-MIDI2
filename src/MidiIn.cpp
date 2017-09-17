@@ -65,6 +65,7 @@ namespace cinder { namespace midi {
 
 	void Input::closePort(){
 		mMidiIn->closePort();
+		mMidiIn->cancelCallback();
 	}
 
 	void Input::processMessage(double deltatime, std::vector<unsigned char> *message){

@@ -260,8 +260,11 @@ void MidiApi :: error( RtMidiError::Type type, std::string errorString )
     return;
   }
 
-  if ( type == RtMidiError::WARNING ) {
-    std::cerr << '\n' << errorString << "\n\n";
+  if (type == RtMidiError::WARNING) {
+	  std::cerr << '\n' << errorString << "\n\n";
+  }
+  else if (type == RtMidiError::DRIVER_ERROR) {
+	  std::cerr << '\n' << errorString << "\n\n";
   }
   else if ( type == RtMidiError::DEBUG_WARNING ) {
 #if defined(__RTMIDI_DEBUG__)

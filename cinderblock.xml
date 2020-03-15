@@ -29,7 +29,6 @@
 	<source>src/MidiMessage.cpp</source>
 	<source>src/MidiOut.cpp</source>
 	<source>lib/RtMidi.cpp</source>
-
 	<platform os="macosx">
 		<framework sdk="true">CoreMIDI.framework</framework>
 	</platform>

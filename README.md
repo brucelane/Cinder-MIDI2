@@ -37,7 +37,9 @@ Using
 
  ```mInput.midiThreadSignal.connect( [this](midi::Message msg){ MidiTestApp::midiListener( msg ); }); ```
 
- 3. if you are using Windows, you need to add ```winmm.lib``` to your linker
+3. if you are using Windows, you need to add ```winmm.lib``` to your linker
+
+4. add __WINDOWS_MM__ to preprocessor
 
 ============
 

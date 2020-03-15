@@ -23,7 +23,6 @@
 	<header>include/MidiIn.h</header>
 	<header>include/MidiMessage.h</header>
 	<header>include/MidiOut.h</header>
-	<header>lib/RtError.h</header>
 	<header>lib/RtMidi.h</header>
 	<source>src/MidiHub.cpp</source>
 	<source>src/MidiIn.cpp</source>

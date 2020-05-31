@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014, Bruce Lane - Martin Blasko All rights reserved.
+ Copyright (c) 2020, Bruce Lane - Martin Blasko All rights reserved.
  This code is intended for use with the Cinder C++ library: http://libcinder.org
 
  This file is part of Cinder-MIDI.
@@ -38,9 +38,9 @@ using namespace std;
 
 class _TBOX_PREFIX_App : public App {
  public:
-	void setup();
-	void update();
-	void draw();
+	void setup() override;
+	void update() override;
+	void draw() override;
 	void midiListener(midi::Message msg);
 
 	midi::Input mMidiIn;

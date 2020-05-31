@@ -64,7 +64,7 @@ public:
 	float sliderValue = 0.0f;
 	string status;
 	int notes[128];
-	int cc[128];
+	//int cc[128];
 
 	ivec2	mCurrentMousePositon;
 
@@ -146,7 +146,7 @@ void Midi2OscApp::onSendError(asio::error_code error)
 	}
 }
 void Midi2OscApp::midiListener(midi::Message msg) {
-	osc::Message oscMsg("/cc");
+	osc::Message oscMsg("/midi");
 	switch (msg.status)
 	{
 	case MIDI_NOTE_ON:
@@ -157,7 +157,7 @@ void Midi2OscApp::midiListener(midi::Message msg) {
 	case MIDI_NOTE_OFF:
 		break;
 	case MIDI_CONTROL_CHANGE:
-		cc[msg.control] = msg.value;
+		//cc[msg.control] = msg.value;
 		sliderValue = msg.value / 127.0f;
 		status = "Control: " + toString(msg.control) + "\n" +
 			"Value: " + toString(msg.value);

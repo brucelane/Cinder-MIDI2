@@ -45,8 +45,8 @@ class _TBOX_PREFIX_App : public App {
 
 	midi::Input mMidiIn;
 	
-	float sliderValue;
-	string status;
+	float sliderValue = 0.0f;
+	string status = "";
 	int notes[128];
 	int cc[128];
 };

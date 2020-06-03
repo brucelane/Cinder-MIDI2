@@ -146,7 +146,7 @@ void Midi2OscApp::onSendError(asio::error_code error)
 	}
 }
 void Midi2OscApp::midiListener(midi::Message msg) {
-	osc::Message oscMsg("/midi");
+	osc::Message oscMsg("/cc");
 	switch (msg.status)
 	{
 	case MIDI_NOTE_ON:

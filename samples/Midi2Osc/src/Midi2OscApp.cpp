@@ -57,6 +57,10 @@ public:
 	void setup() override;
 	void update() override;
 	void draw() override;
+	void mouseMove(MouseEvent event) override;
+	void mouseDown(MouseEvent event) override;
+	void mouseDrag(MouseEvent event) override;
+	void mouseUp(MouseEvent event) override;
 	void midiListener(midi::Message msg);
 
 	midi::Input mMidiIn;
@@ -64,7 +68,7 @@ public:
 	float sliderValue = 0.0f;
 	string status;
 	int notes[128];
-	int cc[128];
+	//int cc[128];
 
 	ivec2	mCurrentMousePositon;
 
@@ -157,7 +161,7 @@ void Midi2OscApp::midiListener(midi::Message msg) {
 	case MIDI_NOTE_OFF:
 		break;
 	case MIDI_CONTROL_CHANGE:
-		cc[msg.control] = msg.value;
+		//cc[msg.control] = msg.value;
 		sliderValue = msg.value / 127.0f;
 		status = "Control: " + toString(msg.control) + "\n" +
 			"Value: " + toString(msg.value);
@@ -181,7 +185,33 @@ void Midi2OscApp::midiListener(midi::Message msg) {
 void Midi2OscApp::update() {
 
 }
+void Midi2OscApp::mouseMove(MouseEvent event)
+{
+}
 
+void Midi2OscApp::mouseDown(MouseEvent event)
+{
+}
+
+void Midi2OscApp::mouseDrag(MouseEvent event)
+{
+	osc::Message oscMx("/cc");
+	oscMx.append(42);
+	oscMx.append((float)event.getX());
+	mSender.send(oscMx, std::bind(&Midi2OscApp::onSendError,
+		this, std::placeholders::_1));
+
+	osc::Message oscMy("/cc");
+	oscMy.append(43);
+	oscMy.append((float)event.getY());
+	mSender.send(oscMy, std::bind(&Midi2OscApp::onSendError,
+		this, std::placeholders::_1));
+	
+}
+
+void Midi2OscApp::mouseUp(MouseEvent event)
+{
+}
 void Midi2OscApp::draw() {
 	gl::clear(Color(0, 0, 0), true);
 	gl::color(Color(1, 1, 1));

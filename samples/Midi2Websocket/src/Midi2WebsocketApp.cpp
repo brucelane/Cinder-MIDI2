@@ -53,7 +53,7 @@ public:
 	string						status = "";
 	int							notes[128];
 	int							cc[128];
-//private:
+private:
 	// Websocket client
 	bool						clientConnected = false;
 	void						wsWrite(std::string msg);

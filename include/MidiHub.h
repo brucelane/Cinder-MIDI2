@@ -44,7 +44,7 @@ namespace cinder { namespace midi {
 		void	connectAll();
 		void	update();
 		
-		int		getConnectedDeviceCount()	{ return midiInPool.size(); };
+		size_t	getConnectedDeviceCount()	{ return midiInPool.size(); };
 		bool	isConnected()				{ return (midiInPool.size() > 0 ? true : false); };
 		bool	isDeviceConnected( std::string _name );
 		

@@ -47,7 +47,7 @@ namespace cinder { namespace midi {
 	
 	// --------------------------------------------------------------------------------------
 	void Hub::disconnectAll() {
-		for ( int i = 0 ; i < midiInPool.size() ; i++ )
+		for (size_t i = 0 ; i < midiInPool.size() ; i++ )
 			delete midiInPool[i];
 		midiInPool.clear();
 		/*
@@ -60,7 +60,7 @@ namespace cinder { namespace midi {
 	// --------------------------------------------------------------------------------------
 	void Hub::connectAll() {
 		
-		for ( int i = 0 ; i < midii.getPortCount() ; i++ )
+		for ( uint8_t i = 0 ; i < midii.getPortCount() ; i++ )
 		{
 			if (this->isDeviceConnected(midii.getPortName(i)))
 				continue;

@@ -56,7 +56,7 @@ int MidiOut::getNumPorts() const
 /// \return "" if number is invalid
 std::string MidiOut::getPortName(unsigned int portNumber) const
 {
-	return mRtMidiOut->getPortName(portNumber);
+	return mRtMidiOut->getPortName(portNumber).c_str(); // strip null chars introduced by rtmidi
 }
 
 /// \section Connection

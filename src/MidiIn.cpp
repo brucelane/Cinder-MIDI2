@@ -30,7 +30,8 @@ namespace cinder { namespace midi {
 		std::cout << "MidiIn: " << mNumPorts << " available." << std::endl;
 		for (size_t i = 0; i < mNumPorts; ++i){
 			std::cout << i << ": " << mMidiIn->getPortName(i).c_str() << std::endl;
-			mPortNames.push_back(mMidiIn->getPortName(i));
+			std::string name( mMidiIn->getPortName( i ).c_str() ); // strip null chars introduced by rtmidi
+			mPortNames.push_back( name );
 		}
 	}
 

@@ -67,7 +67,7 @@ public:
     
     signals::Signal<void(Message)>      midiThreadSignal;   // Will be called from the Midi thread
     signals::Signal<void(Message)>      midiSignal;         // Will be called from the Main thread
-	
+    signals::Signal<void( std::vector< unsigned char > )> midiRawSignal;
 
 protected:
 	

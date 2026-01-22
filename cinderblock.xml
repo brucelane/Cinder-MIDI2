@@ -9,6 +9,7 @@
 	version="1.0.20200531"
 	url="https://github.com/brucelane/Cinder-MIDI2"
 	git="https://github.com/brucelane/Cinder-MIDI2.git"
+	core="true"
 	>
 	<supports os="msw" />
 	<supports os="macosx" />

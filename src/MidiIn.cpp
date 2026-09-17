@@ -8,16 +8,36 @@
 */
 
 #include "MidiIn.h"
+#include "cinder/Log.h"
 
 namespace cinder { namespace midi {
 
 	void MidiInCallback(double deltatime, std::vector<unsigned char> *message, void *userData){
+		// one-shot ground truth for "no midi message is received": if this never logs, RtMidi's
+		// own OS-level callback (registered in Input::openPort()) is never firing at all - the
+		// problem is below this point (driver/device/port), not in VDMidi's signal wiring above it
+		CI_LOG_V("MidiInCallback: " << (message ? message->size() : 0) << " bytes");
 		((Input*)userData)->processMessage(deltatime, message);
+	}
+
+	void RtMidiErrorLogCallback(RtMidiError::Type type, const std::string &errorText, void *userData) {
+		CI_LOG_E("RtMidi error (type " << (int)type << "): " << errorText);
+		if (Input* input = static_cast<Input*>(userData)) input->mHadOpenError = true;
 	}
 
 
 	Input::Input(){
 		mMidiIn = new RtMidiIn();
+		// surface RtMidi's own internal failures (a failed midiInOpen/midiInStart, in particular)
+		// into the app's actual log - see RtMidiErrorLogCallback's comment by its declaration
+		mMidiIn->setErrorCallback(&RtMidiErrorLogCallback, this);
+		// this snapshot is only ever used as openPort()'s bounds check, refreshed every time
+		// listPorts() runs - getNumPorts() itself no longer reads it (see MidiIn.h), since a
+		// port count fixed at construction time never reflects a controller plugged in
+		// afterward, which was the actual cause of "enabling midi doesn't show any devices":
+		// the app constructs this Input once at startup, so an interface enumerated later
+		// (or simply not yet ready when RtMidiIn probed it) would stay invisible for the
+		// entire session no matter how many times the UI's "Enable"/rescan button was pressed.
 		mNumPorts = mMidiIn->getPortCount();
 		mMidiIn->getCurrentApi();
 	}
@@ -27,6 +47,11 @@ namespace cinder { namespace midi {
 	}
 
 	void Input::listPorts(){
+		// re-query live and start from an empty list - previously this appended to mPortNames
+		// without clearing it first, so calling listPorts() more than once (every "Enable"
+		// click) duplicated every entry already in the list on top of using a stale count
+		mNumPorts = mMidiIn->getPortCount();
+		mPortNames.clear();
 		std::cout << "MidiIn: " << mNumPorts << " available." << std::endl;
 		for (size_t i = 0; i < mNumPorts; ++i){
 			std::cout << i << ": " << mMidiIn->getPortName(i).c_str() << std::endl;
@@ -46,6 +71,7 @@ namespace cinder { namespace midi {
 	}
 
 	void Input::openPort(unsigned int port){
+		mHadOpenError = false;
 		if (mNumPorts == 0){
 			throw MidiExcNoPortsAvailable();
 		}

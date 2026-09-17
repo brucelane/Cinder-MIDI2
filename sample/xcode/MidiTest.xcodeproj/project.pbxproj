@@ -1,0 +1,413 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		006D720419952D00008149E2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006D720219952D00008149E2 /* AVFoundation.framework */; };
+		006D720519952D00008149E2 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006D720319952D00008149E2 /* CoreMedia.framework */; };
+		0091D8F90E81B9330029341E /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0091D8F80E81B9330029341E /* OpenGL.framework */; };
+		00B784B30FF439BC000DE1D7 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784AF0FF439BC000DE1D7 /* Accelerate.framework */; };
+		00B784B40FF439BC000DE1D7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */; };
+		00B784B50FF439BC000DE1D7 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B10FF439BC000DE1D7 /* AudioUnit.framework */; };
+		00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
+		00B9955A1B128DF400A5C623 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B995581B128DF400A5C623 /* IOKit.framework */; };
+		00B9955B1B128DF400A5C623 /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B995591B128DF400A5C623 /* IOSurface.framework */; };
+		10FCDFCB066F4DB2B1E4391C /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E47846BE6A934F11B55BFE72 /* CoreMIDI.framework */; };
+		1CF31CE0C9524418932EEB20 /* MidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37C21642E63240C4BA82948A /* MidiIn.cpp */; };
+		32F330F71E38DBA900F5EBC0 /* sampleApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F330F61E38DBA900F5EBC0 /* sampleApp.cpp */; };
+		44647B477118484B996B2736 /* MidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B81C156BD794131937BC6E4 /* MidiOut.cpp */; };
+		4FCC619C1CA0477FB22B4226 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031195969B714B93942EC19C /* RtMidi.cpp */; };
+		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
+		6D7227DA928249238C78442B /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = EF5AF48B775F424FB8096889 /* CinderApp.icns */; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		D3E7AC0086B44F3A9487B807 /* MidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A4D3D626CC45CBA14B10B8 /* MidiMessage.cpp */; };
+		E52733D8E10E439489E24D90 /* MidiHub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84B4D5937E6B47F89619B070 /* MidiHub.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		006D720219952D00008149E2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		006D720319952D00008149E2 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		0091D8F80E81B9330029341E /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		00B784AF0FF439BC000DE1D7 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		00B784B10FF439BC000DE1D7 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		00B784B20FF439BC000DE1D7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		00B995581B128DF400A5C623 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		00B995591B128DF400A5C623 /* IOSurface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSurface.framework; path = System/Library/Frameworks/IOSurface.framework; sourceTree = SDKROOT; };
+		031195969B714B93942EC19C /* RtMidi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = RtMidi.cpp; path = ../../lib/RtMidi.cpp; sourceTree = "<group>"; };
+		097FC40EB0024EB2BC6DA7BC /* MidiMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiMessage.h; path = ../../include/MidiMessage.h; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		2B81C156BD794131937BC6E4 /* MidiOut.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = MidiOut.cpp; path = ../../src/MidiOut.cpp; sourceTree = "<group>"; };
+		32F330F61E38DBA900F5EBC0 /* sampleApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sampleApp.cpp; path = ../src/sampleApp.cpp; sourceTree = "<group>"; };
+		37C21642E63240C4BA82948A /* MidiIn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = MidiIn.cpp; path = ../../src/MidiIn.cpp; sourceTree = "<group>"; };
+		3CB913293F914FEA985001AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		409EB7A7A053409F832D3FB8 /* MidiHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiHeaders.h; path = ../../include/MidiHeaders.h; sourceTree = "<group>"; };
+		44E203E37344409EB11FC779 /* MidiExceptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiExceptions.h; path = ../../include/MidiExceptions.h; sourceTree = "<group>"; };
+		4EEA040731D0478FA97732E4 /* MidiOut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiOut.h; path = ../../include/MidiOut.h; sourceTree = "<group>"; };
+		51A4D3D626CC45CBA14B10B8 /* MidiMessage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = MidiMessage.cpp; path = ../../src/MidiMessage.cpp; sourceTree = "<group>"; };
+		5323E6B10EAFCA74003A9687 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
+		5BF8610838274551AD7A21CD /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
+		6121441195434238986FF026 /* RtMidi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RtMidi.h; path = ../../lib/RtMidi.h; sourceTree = "<group>"; };
+		84B4D5937E6B47F89619B070 /* MidiHub.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = MidiHub.cpp; path = ../../src/MidiHub.cpp; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* MidiTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MidiTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		97645778D955423C813975E1 /* MidiIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiIn.h; path = ../../include/MidiIn.h; sourceTree = "<group>"; };
+		9F20344637F641D3A05CAC3C /* MidiHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiHub.h; path = ../../include/MidiHub.h; sourceTree = "<group>"; };
+		B6CE3523F9E74055B55061CF /* MidiTest_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = MidiTest_Prefix.pch; sourceTree = "<group>"; };
+		BED3AFF3A43D4C0DA3E9541F /* MidiConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiConstants.h; path = ../../include/MidiConstants.h; sourceTree = "<group>"; };
+		E47846BE6A934F11B55BFE72 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		EF5AF48B775F424FB8096889 /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CinderApp.icns; path = ../resources/CinderApp.icns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				006D720419952D00008149E2 /* AVFoundation.framework in Frameworks */,
+				006D720519952D00008149E2 /* CoreMedia.framework in Frameworks */,
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				0091D8F90E81B9330029341E /* OpenGL.framework in Frameworks */,
+				5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */,
+				00B784B30FF439BC000DE1D7 /* Accelerate.framework in Frameworks */,
+				00B784B40FF439BC000DE1D7 /* AudioToolbox.framework in Frameworks */,
+				00B784B50FF439BC000DE1D7 /* AudioUnit.framework in Frameworks */,
+				00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */,
+				00B9955A1B128DF400A5C623 /* IOKit.framework in Frameworks */,
+				00B9955B1B128DF400A5C623 /* IOSurface.framework in Frameworks */,
+				10FCDFCB066F4DB2B1E4391C /* CoreMIDI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01B97315FEAEA392516A2CEA /* Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				18D187C73F494EC797E13F04 /* Midi2 */,
+			);
+			name = Blocks;
+			sourceTree = "<group>";
+		};
+		080E96DDFE201D6D7F000001 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				32F330F61E38DBA900F5EBC0 /* sampleApp.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				006D720219952D00008149E2 /* AVFoundation.framework */,
+				006D720319952D00008149E2 /* CoreMedia.framework */,
+				00B784AF0FF439BC000DE1D7 /* Accelerate.framework */,
+				00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */,
+				00B784B10FF439BC000DE1D7 /* AudioUnit.framework */,
+				00B784B20FF439BC000DE1D7 /* CoreAudio.framework */,
+				5323E6B10EAFCA74003A9687 /* CoreVideo.framework */,
+				0091D8F80E81B9330029341E /* OpenGL.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				00B995581B128DF400A5C623 /* IOKit.framework */,
+				00B995591B128DF400A5C623 /* IOSurface.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		18D187C73F494EC797E13F04 /* Midi2 */ = {
+			isa = PBXGroup;
+			children = (
+				BB7CCEF7188A47299FC92E9C /* include */,
+				F3560099658D4D859B0F29C5 /* lib */,
+				8DD12AA2116247F1B7C810A4 /* src */,
+			);
+			name = Midi2;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* MidiTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* MidiTest */ = {
+			isa = PBXGroup;
+			children = (
+				01B97315FEAEA392516A2CEA /* Blocks */,
+				29B97315FDCFA39411CA2CEA /* Headers */,
+				080E96DDFE201D6D7F000001 /* Source */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = MidiTest;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				5BF8610838274551AD7A21CD /* Resources.h */,
+				B6CE3523F9E74055B55061CF /* MidiTest_Prefix.pch */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EF5AF48B775F424FB8096889 /* CinderApp.icns */,
+				3CB913293F914FEA985001AD /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+				E47846BE6A934F11B55BFE72 /* CoreMIDI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8DD12AA2116247F1B7C810A4 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				84B4D5937E6B47F89619B070 /* MidiHub.cpp */,
+				37C21642E63240C4BA82948A /* MidiIn.cpp */,
+				51A4D3D626CC45CBA14B10B8 /* MidiMessage.cpp */,
+				2B81C156BD794131937BC6E4 /* MidiOut.cpp */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		BB7CCEF7188A47299FC92E9C /* include */ = {
+			isa = PBXGroup;
+			children = (
+				BED3AFF3A43D4C0DA3E9541F /* MidiConstants.h */,
+				44E203E37344409EB11FC779 /* MidiExceptions.h */,
+				409EB7A7A053409F832D3FB8 /* MidiHeaders.h */,
+				9F20344637F641D3A05CAC3C /* MidiHub.h */,
+				97645778D955423C813975E1 /* MidiIn.h */,
+				097FC40EB0024EB2BC6DA7BC /* MidiMessage.h */,
+				4EEA040731D0478FA97732E4 /* MidiOut.h */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		F3560099658D4D859B0F29C5 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				6121441195434238986FF026 /* RtMidi.h */,
+				031195969B714B93942EC19C /* RtMidi.cpp */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* MidiTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "MidiTest" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MidiTest;
+			productInstallPath = "$(HOME)/Applications";
+			productName = MidiTest;
+			productReference = 8D1107320486CEB800E47090 /* MidiTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MidiTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* MidiTest */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* MidiTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D7227DA928249238C78442B /* CinderApp.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32F330F71E38DBA900F5EBC0 /* sampleApp.cpp in Sources */,
+				E52733D8E10E439489E24D90 /* MidiHub.cpp in Sources */,
+				1CF31CE0C9524418932EEB20 /* MidiIn.cpp in Sources */,
+				D3E7AC0086B44F3A9487B807 /* MidiMessage.cpp in Sources */,
+				44647B477118484B996B2736 /* MidiOut.cpp in Sources */,
+				4FCC619C1CA0477FB22B4226 /* RtMidi.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MidiTest_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/macosx/$(CONFIGURATION)/libcinder.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.libcinder.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = MidiTest;
+				SYMROOT = ./build;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_FAST_MATH = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MidiTest_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"NDEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/macosx/$(CONFIGURATION)/libcinder.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.libcinder.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = MidiTest;
+				STRIP_INSTALLED_PRODUCT = YES;
+				SYMROOT = ./build;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CINDER_PATH = ../../../..;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
+				CLANG_CXX_LIBRARY = "libc++";
+				ENABLE_TESTABILITY = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../include ../../lib ../../src";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CINDER_PATH = ../../../..;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../include ../../lib ../../src";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "MidiTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MidiTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

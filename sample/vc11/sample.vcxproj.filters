@@ -1,0 +1,94 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Blocks">
+      <UniqueIdentifier>{6060FB75-28A0-4A07-A3BA-DDFC25931732}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Midi2">
+      <UniqueIdentifier>{890757FF-67CC-4CC1-B41F-56E0D4FACC0E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Midi2\include">
+      <UniqueIdentifier>{ADC41AF3-A694-4173-A91E-B2BC1300AB53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Midi2\lib">
+      <UniqueIdentifier>{D0C23C05-3D4D-466B-8C39-C18293E4596E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Midi2\src">
+      <UniqueIdentifier>{F014DD4A-41BB-462E-BD4D-BAA4A482B1B5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\sampleApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sampleApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\MidiConstants.h">
+      <Filter>Blocks\Midi2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\MidiExceptions.h">
+      <Filter>Blocks\Midi2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\MidiHeaders.h">
+      <Filter>Blocks\Midi2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\MidiHub.h">
+      <Filter>Blocks\Midi2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\MidiIn.h">
+      <Filter>Blocks\Midi2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\MidiMessage.h">
+      <Filter>Blocks\Midi2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\MidiOut.h">
+      <Filter>Blocks\Midi2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\RtError.h">
+      <Filter>Blocks\Midi2\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\RtMidi.h">
+      <Filter>Blocks\Midi2\lib</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\src\MidiHub.cpp">
+      <Filter>Blocks\Midi2\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\MidiIn.cpp">
+      <Filter>Blocks\Midi2\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\MidiMessage.cpp">
+      <Filter>Blocks\Midi2\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\MidiOut.cpp">
+      <Filter>Blocks\Midi2\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\RtMidi.cpp">
+      <Filter>Blocks\Midi2\lib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

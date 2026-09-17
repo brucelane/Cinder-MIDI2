@@ -44,6 +44,12 @@ Midi parsing taken from openFrameworks addon ofxMidi by Theo Watson & Dan Wilcox
 namespace cinder { namespace midi {
 
 void MidiInCallback( double deltatime, std::vector< unsigned char > *message, void *userData );
+// routes RtMidi's own internal errors (e.g. midiInOpen/midiInStart failing) into Cinder's logger -
+// by default RtMidi only writes these to std::cerr, invisible in a windowed (non-console) app, and
+// most of them (RtMidiError::DRIVER_ERROR in particular - the one midiInOpen/midiInStart failures
+// actually use) don't throw either, so a failed open previously had literally no visible trace
+// anywhere: no exception, no log, just a port that silently never delivers a callback
+void RtMidiErrorLogCallback( RtMidiError::Type type, const std::string &errorText, void *userData );
 
 class Input {
 public:
@@ -54,10 +60,17 @@ public:
 	void listPorts();
 	void openPort(unsigned int port = 0);
 	void closePort();
+	// RtMidi's own openPort()/midiInStart() failures (e.g. the device already claimed by another
+	// application, a driver error) mostly don't throw - see RtMidiErrorLogCallback's comment - so
+	// this is the only way a caller can tell an openPort() call actually worked. Reset at the top
+	// of every openPort() call, set by RtMidiErrorLogCallback if RtMidi reports anything during it.
+	bool hadOpenError() const { return mHadOpenError; }
     
     void setDispatchToMainThread(bool shouldDispatch) { mDispatchToMainThread = shouldDispatch; }
 	
-	unsigned int getNumPorts()const{ return mNumPorts; }
+	// live, not cached - see MidiIn.cpp's constructor comment for why this must never just
+	// return the stored mNumPorts (a stale snapshot from whenever this Input was constructed)
+	unsigned int getNumPorts()const{ return mMidiIn->getPortCount(); }
 	unsigned int getPort()const;
 	void ignoreTypes(bool sysex, bool time, bool midisense);
 	
@@ -75,9 +88,11 @@ protected:
 	unsigned int    mNumPorts;
 	unsigned int    mPort;
 	std::string     mName;
-    
-    bool            mDispatchToMainThread { true };
 
+    bool            mDispatchToMainThread { true };
+    bool            mHadOpenError { false };
+
+	friend void RtMidiErrorLogCallback( RtMidiError::Type type, const std::string &errorText, void *userData );
 };
 
 } // namespace midi

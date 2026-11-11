@@ -573,7 +573,7 @@ inline void RtMidiOut :: setErrorCallback( RtMidiErrorCallback errorCallback, vo
 // CINDER_MSW/CINDER_LINUX/CINDER_MAC are defined by cinder/Cinder.h - this file must include it
 // itself rather than relying on whichever translation unit happens to pull it in first. Without
 // this, RtMidi.cpp (which #includes this header directly, with nothing else ahead of it) would
-// preprocess with none of these platform macros defined, so none of __LINUX_ALSASEQ__/
+// preprocess with none of these platform macros defined, so none of __LINUX_ALSA__/
 // __WINDOWS_MM__/__MACOSX_CORE__ get set either, silently falling through to __RTMIDI_DUMMY__
 // below - a compilable but entirely non-functional backend that always reports 0 ports. That is
 // exactly what "enabling MIDI shows no devices, for both input and output, regardless of what's
@@ -581,7 +581,9 @@ inline void RtMidiOut :: setErrorCallback( RtMidiErrorCallback errorCallback, vo
 // to any real OS MIDI API in the first place.
 #include "cinder/Cinder.h"
 #if defined( CINDER_LINUX )
-	#define __LINUX_ALSASEQ__
+	// __LINUX_ALSA__ is the name RtMidi tests (below and in RtMidi.cpp); the old __LINUX_ALSASEQ__
+	// matched nothing, so Linux got the dummy backend (no ports). Link with -lasound.
+	#define __LINUX_ALSA__
 #elif defined( CINDER_MSW )
 	#define __WINDOWS_MM__
 #elif defined( CINDER_MAC )
